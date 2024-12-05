@@ -1,0 +1,68 @@
+<topRule> ::= **Name** <identifier> ; [ <varsBlok> ] ; **Body** { <write> | <read> | <assignment> | <ifStatement> | <goto_statement> | <labelRule> | <forToOrDownToDoRule> | <while> | <repeatUntil> } **End**
+
+<varsBlok> ::= **Data** **Longint** <identifier> { ',' <identifier> }*
+
+<identifier> ::= _<low_letter> { <up_letter> | <number> }* <= 16
+
+<commaAndIdentifier> ::= ',' <identifier>
+
+<codeBlok> ::= **Body** { <write> | <read> | <assignment> | <ifStatement> | <goto_statement> | <labelRule> | <forToOrDownToDoRule> | <while> | <repeatUntil> } **End**
+
+<read> ::= **Read** '(' <identifier> ')'
+
+<write> ::= **Write** '(' ( <equation> | <stringRule> ) ')'
+
+<assignment> ::= <identifier> '=' <equation>
+
+<ifStatement> ::= **If** '(' <equation> ')' <codeBlok> <elseStatement>?
+
+<elseStatement> ::= **Else** <codeBlok>
+
+<goto_statement> ::= **Goto** <identifier>
+
+<labelRule> ::= <identifier> ':'
+
+<forToOrDownToDoRule> ::= **For** <assignment> ( **To** | **Downto** ) <equation> **Do** <codeBlok>
+
+<while> ::= **While** '(' <equation> ')' <codeBlok>
+
+<repeatUntil> ::= **Repeat** <codeBlok> **Until** '(' <equation> ')'
+
+<equation> ::= <primaryExpression> { ( <operationAndIdentOrNumber> <primaryExpression> )* }
+
+<primaryExpression> ::= <signedNumber> 
+                      | <identifier> 
+                      | <notRule>
+                      | '(' <equation> ')'
+
+<notRule> ::= <notOperation> ( <signedNumber> | <identifier> | <equation> )
+
+<operationAndIdentOrNumber> ::= <mult> | <arithmetic> | <logic> | <compare>
+
+<arithmetic> ::= '++' | '--'
+
+<mult> ::= '*' | **Div** | **Mod**
+
+<logic> ::= '&&' | '||'
+
+<notOperation> ::= '!!'
+
+<compare> ::= '=' | '<>' | '<=' | '>='
+
+<stringRule> ::= '"' <string> '"'
+
+<comment> ::= <LComment> <string>
+
+<LComment> ::= '\\'
+
+<string> ::= { <low_letter> | <up_letter> | <number> }
+
+<signedNumber> ::= [ <sign> ] <digit> { <digit> }*
+
+<sign> ::= '+' | '-'
+
+<low_letter> ::= 'a' | 'b' | 'c' | 'd' | 'e' | 'f' | 'g' | 'h' | 'i' | 'j' | 'k' | 'l' | 'm' | 'n' | 'o' | 'p' | 'q' | 'r' | 's' | 't' | 'u' | 'v' | 'w' | 'x' | 'y' | 'z'
+
+<up_letter> ::= 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G' | 'H' | 'I' | 'J' | 'K' | 'L' | 'M' | 'N' | 'O' | 'P' | 'Q' | 'R' | 'S' | 'T' | 'U' | 'V' | 'W' | 'X' | 'Y' | 'Z'
+
+<digit> ::= '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'
