@@ -1,0 +1,57 @@
+\\Prog2
+Name prog2;
+Data Longint _aAAAAAAAAAAAAAAAA,_bBBBBBBBBBBBBBBBB,_cCCCCCCCCCCCCCCCC;
+Body
+Read _aAAAAAAAAAAAAAAAA;
+Read _bBBBBBBBBBBBBBBBB;
+Read _cCCCCCCCCCCCCCCCC;
+If(_aAAAAAAAAAAAAAAAA >= _bBBBBBBBBBBBBBBBB)
+Body
+	If(_aAAAAAAAAAAAAAAAA >= _cCCCCCCCCCCCCCCCC)
+	Body
+		Goto Abigger;		
+	End
+	Else
+	Body
+		Write _cCCCCCCCCCCCCCCCC;
+		Goto Outofif;
+		Abigger:		
+		Write _aAAAAAAAAAAAAAAAA;
+		Goto Outofif;
+	End
+End	
+If(_bBBBBBBBBBBBBBBBB <= _cCCCCCCCCCCCCCCCC)
+Body
+	Write _cCCCCCCCCCCCCCCCC;
+End	
+Else
+Body
+	Write _bBBBBBBBBBBBBBBBB;
+End
+Outofif:	
+
+If((_aAAAAAAAAAAAAAAAA = _bBBBBBBBBBBBBBBBB) && (_aAAAAAAAAAAAAAAAA = _cCCCCCCCCCCCCCCCC) && (_bBBBBBBBBBBBBBBBB = _cCCCCCCCCCCCCCCCC))
+Body
+	Write 1;
+End	
+Else
+Body
+	Write 0;
+End
+If((_aAAAAAAAAAAAAAAAA <= 0) || (_bBBBBBBBBBBBBBBBB <= 0) || (_cCCCCCCCCCCCCCCCC <= 0))
+Body
+	Write -1;
+End	
+Else
+Body
+	Write 0;
+End
+If(!!(_aAAAAAAAAAAAAAAAA <= (_bBBBBBBBBBBBBBBBB ++ _cCCCCCCCCCCCCCCCC)))
+Body
+	Write(10);
+End	
+Else
+Body
+	Write(0);
+End
+End
